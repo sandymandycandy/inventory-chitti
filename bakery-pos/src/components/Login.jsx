@@ -15,19 +15,16 @@ function Login({ onLoginSuccess }) {
         setLoading(true);
 
         try {
-            // Dynamic API URL for network access
-            const API_URL = window.location.hostname === 'localhost' 
+            const API_URL = window.location.hostname === 'localhost'
                 ? 'http://localhost:5000/api'
                 : `http://${window.location.hostname}:5000/api`;
-            
+
             const response = await axios.post(`${API_URL}/auth/login`, formData);
             const { token, user } = response.data;
 
-            // Store token and user data
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(user));
 
-            // Call parent callback
             onLoginSuccess(user);
         } catch (err) {
             setError(err.response?.data?.error || 'Login failed. Please try again.');
@@ -44,90 +41,307 @@ function Login({ onLoginSuccess }) {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-sky-50/30 to-blue-50/20 p-4">
-            <div className="w-full max-w-md">
-                {/* Logo/Brand Section */}
-                <div className="text-center mb-8">
-                    <div className="inline-flex items-center gap-4 px-8 py-6 bg-white rounded-3xl shadow-2xl mb-6">
-                        <img 
-                            src="/logo.png" 
-                            alt="Tins & Trays Logo" 
-                            className="w-32 h-32 object-contain"
-                        />
-                    </div>
-                    <p className="text-slate-600 font-medium text-lg">Bakery Management System</p>
+        <div style={{
+            minHeight: '100vh',
+            backgroundColor: '#008080',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontFamily: 'Tahoma, "MS Sans Serif", Arial, sans-serif',
+            fontSize: '11px',
+        }}>
+            {/* Windows 2000 Login Dialog */}
+            <div style={{
+                width: '380px',
+                backgroundColor: '#d4d0c8',
+                borderTop: '2px solid #ffffff',
+                borderLeft: '2px solid #ffffff',
+                borderRight: '2px solid #404040',
+                borderBottom: '2px solid #404040',
+                boxShadow: '4px 4px 8px rgba(0,0,0,0.5)',
+            }}>
+                {/* Titlebar */}
+                <div style={{
+                    background: 'linear-gradient(to right, #000080, #1084d0)',
+                    color: '#ffffff',
+                    padding: '4px 6px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    fontSize: '11px',
+                    fontWeight: '700',
+                    userSelect: 'none',
+                }}>
+                    <span style={{ fontSize: '12px' }}>🔐</span>
+                    <span style={{ flex: 1 }}>Log On to Windows</span>
+                    {/* Title buttons */}
+                    {['?', '✕'].map((btn, i) => (
+                        <div
+                            key={i}
+                            style={{
+                                width: '18px',
+                                height: '16px',
+                                backgroundColor: '#d4d0c8',
+                                borderTop: '1px solid #ffffff',
+                                borderLeft: '1px solid #ffffff',
+                                borderRight: '1px solid #404040',
+                                borderBottom: '1px solid #404040',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                fontSize: '10px',
+                                fontWeight: '700',
+                                color: '#000000',
+                                cursor: 'default',
+                            }}
+                        >
+                            {btn}
+                        </div>
+                    ))}
                 </div>
 
-                {/* Login Card */}
-                <div className="card p-8">
-                    <h2 className="text-2xl font-bold text-slate-900 mb-6 text-center">Welcome Back</h2>
+                {/* Dialog Content */}
+                <div style={{ padding: '16px' }}>
+                    {/* Logo + Branding Area */}
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '12px',
+                        marginBottom: '16px',
+                        padding: '12px',
+                        backgroundColor: '#ffffff',
+                        borderTop: '1px solid #808080',
+                        borderLeft: '1px solid #808080',
+                        borderRight: '1px solid #ffffff',
+                        borderBottom: '1px solid #ffffff',
+                        boxShadow: 'inset 1px 1px 0 #404040',
+                    }}>
+                        <img
+                            src="/logo.png"
+                            alt="Tins & Trays Logo"
+                            style={{ width: '56px', height: '56px', objectFit: 'contain', flexShrink: 0 }}
+                        />
+                        <div>
+                            <div style={{ fontWeight: '700', fontSize: '13px', color: '#000080' }}>
+                                Tins &amp; Trays Bakery
+                            </div>
+                            <div style={{ fontSize: '11px', color: '#444444', marginTop: '2px' }}>
+                                Bakery Management System
+                            </div>
+                            <div style={{ fontSize: '10px', color: '#666666', marginTop: '2px' }}>
+                                Microsoft Windows 2000 Professional
+                            </div>
+                        </div>
+                    </div>
 
+                    {/* Separator */}
+                    <div style={{
+                        borderTop: '1px solid #808080',
+                        borderBottom: '1px solid #ffffff',
+                        marginBottom: '14px',
+                    }} />
+
+                    {/* Instructions */}
+                    <div style={{ marginBottom: '12px', fontSize: '11px', color: '#000000', lineHeight: 1.5 }}>
+                        Type your user name and password to log on to Bakery POS.
+                    </div>
+
+                    {/* Error box */}
                     {error && (
-                        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl">
-                            <p className="text-sm text-red-600 font-medium">{error}</p>
+                        <div style={{
+                            marginBottom: '10px',
+                            padding: '6px 8px',
+                            backgroundColor: '#ffffff',
+                            borderTop: '1px solid #808080',
+                            borderLeft: '1px solid #808080',
+                            borderRight: '1px solid #ffffff',
+                            borderBottom: '1px solid #ffffff',
+                            boxShadow: 'inset 1px 1px 0 #404040',
+                            fontSize: '11px',
+                            color: '#cc0000',
+                            display: 'flex',
+                            alignItems: 'flex-start',
+                            gap: '6px',
+                        }}>
+                            <span style={{ fontSize: '14px', flexShrink: 0 }}>⚠️</span>
+                            <span>{error}</span>
                         </div>
                     )}
 
-                    <form onSubmit={handleSubmit} className="space-y-5">
-                        <div>
-                            <label className="label">Username</label>
-                            <input
-                                type="text"
-                                name="username"
-                                value={formData.username}
-                                onChange={handleChange}
-                                className="input"
-                                placeholder="Enter your username"
-                                required
-                                autoFocus
-                            />
+                    {/* Form */}
+                    <form onSubmit={handleSubmit}>
+                        <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '14px' }}>
+                            <tbody>
+                                <tr>
+                                    <td style={{ width: '110px', paddingBottom: '6px', paddingRight: '8px', fontSize: '11px', whiteSpace: 'nowrap' }}>
+                                        <label htmlFor="username">User name:</label>
+                                    </td>
+                                    <td style={{ paddingBottom: '6px' }}>
+                                        <input
+                                            id="username"
+                                            type="text"
+                                            name="username"
+                                            value={formData.username}
+                                            onChange={handleChange}
+                                            required
+                                            autoFocus
+                                            style={{
+                                                width: '100%',
+                                                backgroundColor: '#ffffff',
+                                                borderTop: '1px solid #808080',
+                                                borderLeft: '1px solid #808080',
+                                                borderRight: '1px solid #ffffff',
+                                                borderBottom: '1px solid #ffffff',
+                                                padding: '2px 4px',
+                                                fontSize: '11px',
+                                                fontFamily: 'Tahoma, sans-serif',
+                                                boxShadow: 'inset 1px 1px 0 #404040',
+                                                outline: 'none',
+                                                height: '22px',
+                                            }}
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{ paddingBottom: '6px', paddingRight: '8px', fontSize: '11px', whiteSpace: 'nowrap' }}>
+                                        <label htmlFor="password">Password:</label>
+                                    </td>
+                                    <td style={{ paddingBottom: '6px' }}>
+                                        <input
+                                            id="password"
+                                            type="password"
+                                            name="password"
+                                            value={formData.password}
+                                            onChange={handleChange}
+                                            required
+                                            style={{
+                                                width: '100%',
+                                                backgroundColor: '#ffffff',
+                                                borderTop: '1px solid #808080',
+                                                borderLeft: '1px solid #808080',
+                                                borderRight: '1px solid #ffffff',
+                                                borderBottom: '1px solid #ffffff',
+                                                padding: '2px 4px',
+                                                fontSize: '11px',
+                                                fontFamily: 'Tahoma, sans-serif',
+                                                boxShadow: 'inset 1px 1px 0 #404040',
+                                                outline: 'none',
+                                                height: '22px',
+                                            }}
+                                        />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        {/* Separator */}
+                        <div style={{
+                            borderTop: '1px solid #808080',
+                            borderBottom: '1px solid #ffffff',
+                            marginBottom: '12px',
+                        }} />
+
+                        {/* Demo credentials info box */}
+                        <div style={{
+                            marginBottom: '12px',
+                            padding: '6px 8px',
+                            backgroundColor: '#ffffc0',
+                            borderTop: '1px solid #808080',
+                            borderLeft: '1px solid #808080',
+                            borderRight: '1px solid #ffffff',
+                            borderBottom: '1px solid #ffffff',
+                            boxShadow: 'inset 1px 1px 0 #404040',
+                            fontSize: '11px',
+                        }}>
+                            <div style={{ fontWeight: '700', marginBottom: '4px' }}>ℹ Demo Credentials</div>
+                            <div>Username: <strong>admin</strong></div>
+                            <div>Password: <strong>admin123</strong></div>
                         </div>
 
-                        <div>
-                            <label className="label">Password</label>
-                            <input
-                                type="password"
-                                name="password"
-                                value={formData.password}
-                                onChange={handleChange}
-                                className="input"
-                                placeholder="Enter your password"
-                                required
-                            />
+                        {/* Buttons row */}
+                        <div style={{
+                            display: 'flex',
+                            justifyContent: 'flex-end',
+                            gap: '6px',
+                        }}>
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                style={{
+                                    backgroundColor: '#d4d0c8',
+                                    borderTop: '2px solid #ffffff',
+                                    borderLeft: '2px solid #ffffff',
+                                    borderRight: '2px solid #404040',
+                                    borderBottom: '2px solid #404040',
+                                    padding: '4px 20px',
+                                    fontSize: '11px',
+                                    fontFamily: 'Tahoma, sans-serif',
+                                    fontWeight: '700',
+                                    cursor: loading ? 'wait' : 'pointer',
+                                    outline: '1px dotted #000000',
+                                    outlineOffset: '1px',
+                                    boxShadow: '1px 1px 0 #808080',
+                                    minWidth: '75px',
+                                    color: loading ? '#808080' : '#000000',
+                                }}
+                            >
+                                {loading ? 'Please wait...' : 'OK'}
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => setFormData({ username: '', password: '' })}
+                                style={{
+                                    backgroundColor: '#d4d0c8',
+                                    borderTop: '2px solid #ffffff',
+                                    borderLeft: '2px solid #ffffff',
+                                    borderRight: '2px solid #404040',
+                                    borderBottom: '2px solid #404040',
+                                    padding: '4px 20px',
+                                    fontSize: '11px',
+                                    fontFamily: 'Tahoma, sans-serif',
+                                    cursor: 'pointer',
+                                    boxShadow: '1px 1px 0 #808080',
+                                    minWidth: '75px',
+                                }}
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                type="button"
+                                style={{
+                                    backgroundColor: '#d4d0c8',
+                                    borderTop: '2px solid #ffffff',
+                                    borderLeft: '2px solid #ffffff',
+                                    borderRight: '2px solid #404040',
+                                    borderBottom: '2px solid #404040',
+                                    padding: '4px 20px',
+                                    fontSize: '11px',
+                                    fontFamily: 'Tahoma, sans-serif',
+                                    cursor: 'pointer',
+                                    boxShadow: '1px 1px 0 #808080',
+                                    minWidth: '75px',
+                                    color: '#808080',
+                                }}
+                            >
+                                Options &gt;&gt;
+                            </button>
                         </div>
-
-                        <button
-                            type="submit"
-                            className="btn btn-primary w-full"
-                            disabled={loading}
-                        >
-                            {loading ? (
-                                <div className="flex items-center justify-center gap-2">
-                                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                                    <span>Signing in...</span>
-                                </div>
-                            ) : (
-                                'Sign In'
-                            )}
-                        </button>
                     </form>
-
-                    {/* Demo Credentials */}
-                    <div className="mt-8 p-4 bg-sky-50 border border-sky-200 rounded-xl">
-                        <p className="text-xs font-bold text-sky-900 mb-2 uppercase tracking-wide">Demo Credentials</p>
-                        <div className="space-y-1 text-xs text-sky-700">
-                            <p><span className="font-semibold">Username:</span> admin</p>
-                            <p><span className="font-semibold">Password:</span> admin123</p>
-                        </div>
-                    </div>
                 </div>
+            </div>
 
-                {/* Footer */}
-                <div className="text-center mt-6">
-                    <p className="text-sm text-slate-500">
-                        &copy; 2026 Tins & Trays Bakery. All rights reserved.
-                    </p>
-                </div>
+            {/* Desktop icons hint */}
+            <div style={{
+                position: 'absolute',
+                bottom: '8px',
+                right: '8px',
+                color: '#ffffff',
+                fontSize: '10px',
+                textShadow: '1px 1px 2px rgba(0,0,0,0.8)',
+                fontFamily: 'Tahoma, sans-serif',
+                textAlign: 'center',
+            }}>
+                © 2026 Tins &amp; Trays Bakery
             </div>
         </div>
     );
