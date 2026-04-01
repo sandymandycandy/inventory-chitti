@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bakery Delight - The Taste of Home-Baked Goodness</title>
+    <meta name="description"
+        content="Experience the finest home-baked goods. Fresh cakes, cupcakes, cookies, and more delivered to your doorstep.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            DEFAULT: '#F5EFE7',
+                            dark: '#E8DFD0',
+                        },
+                        beige: '#E8D4BC',
+                        peach: '#E8A87C',
+                        terracotta: '#D97850',
+                        brown: '#8B5A3C',
+                        dark: '#2C1810',
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Animations -->
+    <style>
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="font-body text-gray-800 bg-gray-50 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between py-5">
+                <!-- Logo -->
+                <div class="flex items-center gap-3 font-bold text-lg tracking-wide text-dark">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 5L25 15H15L20 5Z" fill="#D97850" />
+                        <rect x="10" y="15" width="20" height="20" rx="2" fill="#E8A87C" />
+                        <circle cx="20" cy="25" r="3" fill="#D97850" />
+                    </svg>
+                    <span>BAKERY DELIGHT</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <ul class="hidden md:flex items-center gap-10" id="navMenu">
+                    <li><a href="#home"
+                            class="nav-link text-sm font-medium text-gray-600 hover:text-terracotta transition-colors relative active">Home</a>
+                    </li>
+                    <li><a href="#about"
+                            class="nav-link text-sm font-medium text-gray-600 hover:text-terracotta transition-colors relative">About</a>
+                    </li>
+                    <li><a href="#services"
+                            class="nav-link text-sm font-medium text-gray-600 hover:text-terracotta transition-colors relative">Services</a>
+                    </li>
+                    <li><a href="#products"
+                            class="nav-link text-sm font-medium text-gray-600 hover:text-terracotta transition-colors relative">Products</a>
+                    </li>
+                    <li><a href="#contact"
+                            class="nav-link text-sm font-medium text-gray-600 hover:text-terracotta transition-colors relative">Contact
+                            Us</a></li>
+                </ul>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-4">
+                    <button
+                        class="hidden md:flex w-10 h-10 rounded-full items-center justify-center text-gray-600 hover:bg-gray-100 hover:text-terracotta transition-all"
+                        aria-label="Search">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="2" />
+                            <path d="M14 14L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </button>
+                    <button
+                        class="hidden md:inline-flex px-8 py-3.5 bg-terracotta text-white text-sm font-semibold rounded-lg hover:bg-brown hover:-translate-y-0.5 transition-all shadow-md hover:shadow-lg">Book
+                        Now</button>
+                    <button class="md:hidden flex flex-col gap-1.5 w-8" id="mobileMenuToggle" aria-label="Toggle menu">
+                        <span class="w-full h-0.5 bg-dark transition-all"></span>
+                        <span class="w-full h-0.5 bg-dark transition-all"></span>
+                        <span class="w-full h-0.5 bg-dark transition-all"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-cream to-cream-dark pt-40 pb-20 overflow-hidden" id="home">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center relative z-10">
+                <!-- Hero Content -->
+                <div>
+                    <p class="text-lg text-terracotta font-semibold mb-5 tracking-widest uppercase">What Are You Craving
+                    </p>
+                    <h1 class="font-heading text-6xl md:text-7xl font-extrabold leading-tight text-dark mb-10">
+                        The Taste Of<br>
+                        <span class="text-terracotta">Home-Baked</span><br>
+                        Goodness To<br>
+                        Enrich Every<br>
+                        Moment.
+                    </h1>
+                    <button
+                        class="px-12 py-4 bg-dark text-white text-sm font-semibold rounded-lg hover:bg-brown hover:-translate-y-0.5 transition-all shadow-md hover:shadow-lg">Book
+                        Order</button>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="relative flex items-center justify-center">
+                    <div class="animate-float">
+                        <img src="hero-donut.png" alt="Delicious Donuts" id="heroProductImg"
+                            class="w-full max-w-lg filter drop-shadow-2xl">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div
+            class="absolute w-96 h-96 bg-gradient-to-br from-peach/10 to-terracotta/5 rounded-full -top-48 -right-24 z-0">
+        </div>
+        <div
+            class="absolute w-72 h-72 bg-gradient-to-br from-peach/10 to-terracotta/5 rounded-full -bottom-36 -left-24 z-0">
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-32 bg-white" id="services">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="text-base text-terracotta font-semibold mb-3 tracking-widest uppercase">Services</p>
+                <h2 class="font-heading text-5xl font-bold leading-tight text-dark">Sweet, Fluffy &
+                    Delicious<br>Relishment</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mt-16">
+                <!-- Service Card 1 -->
+                <div class="text-center transition-all hover:-translate-y-2.5 cursor-pointer">
+                    <div
+                        class="w-44 h-44 mx-auto mb-6 rounded-full overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all">
+                        <img src="cake-icon.png" alt="Cake" id="cakeIcon" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-dark tracking-wide">CAKE</h3>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="text-center transition-all hover:-translate-y-2.5 cursor-pointer">
+                    <div
+                        class="w-44 h-44 mx-auto mb-6 rounded-full overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all">
+                        <img src="cupcake-icon.png" alt="Cupcake" id="cupcakeIcon" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-dark tracking-wide">CUPCAKE</h3>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="text-center transition-all hover:-translate-y-2.5 cursor-pointer">
+                    <div
+                        class="w-44 h-44 mx-auto mb-6 rounded-full overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all">
+                        <img src="donut-icon.png" alt="Donut" id="donutIcon" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-dark tracking-wide">DONUT</h3>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="text-center transition-all hover:-translate-y-2.5 cursor-pointer">
+                    <div
+                        class="w-44 h-44 mx-auto mb-6 rounded-full overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition-all">
+                        <img src="biscuit-icon.png" alt="Biscuits" id="biscuitIcon" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-dark tracking-wide">BISCUITS</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="py-32 bg-gradient-to-b from-white to-gray-50" id="products">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="font-heading text-5xl font-bold text-center text-dark mb-16">Our Best Selling Cookies</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 my-16">
+                <!-- Product 1 -->
+                <div class="text-center transition-all hover:-translate-y-2 cursor-pointer">
+                    <div class="relative mb-6">
+                        <img src="cookie.png" alt="Tara's Cookie" id="cookie1"
+                            class="w-56 mx-auto filter drop-shadow-xl hover:drop-shadow-2xl hover:scale-105 transition-all">
+                        <div
+                            class="absolute -top-5 right-1/2 transform translate-x-36 bg-brown text-white px-4 py-3 rounded-lg text-xs font-semibold uppercase tracking-wide shadow-md flex items-center gap-2 min-w-[100px]">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="8" />
+                            </svg>
+                            <span>Choco<br>Chips</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-dark mb-3">Tara's Cookie</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed max-w-xs mx-auto">chocolate chip with sea salt and
+                        toasted pecans.</p>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="text-center transition-all hover:-translate-y-2 cursor-pointer">
+                    <div class="relative mb-6">
+                        <img src="cookie.png" alt="Piña Colada Cookie" id="cookie2"
+                            class="w-56 mx-auto filter drop-shadow-xl hover:drop-shadow-2xl hover:scale-105 transition-all">
+                        <div
+                            class="absolute -top-5 right-1/2 transform translate-x-36 bg-[#A8D5BA] text-dark px-4 py-3 rounded-lg text-xs font-semibold uppercase tracking-wide shadow-md flex items-center gap-2 min-w-[100px]">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="8" />
+                            </svg>
+                            <span>COCONUTS</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-dark mb-3">Piña Colada Cookie</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed max-w-xs mx-auto">Coconuts, pineapples, mangoes and
+                        dates combine to create an amazing flavor</p>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="text-center transition-all hover:-translate-y-2 cursor-pointer">
+                    <div class="relative mb-6">
+                        <img src="cookie.png" alt="Oatmeal Cookie" id="cookie3"
+                            class="w-56 mx-auto filter drop-shadow-xl hover:drop-shadow-2xl hover:scale-105 transition-all">
+                        <div
+                            class="absolute -top-5 right-1/2 transform translate-x-36 bg-[#A8A8A8] text-white px-4 py-3 rounded-lg text-xs font-semibold uppercase tracking-wide shadow-md flex items-center gap-2 min-w-[100px]">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="8" />
+                            </svg>
+                            <span>OATS</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-dark mb-3">Oatmeal Fruit n' Chocolate Cookie</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed max-w-xs mx-auto">Oats, raisins, dates, dark
+                        chocolate and smooth Vietnamese cinnamon.</p>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="text-center transition-all hover:-translate-y-2 cursor-pointer">
+                    <div class="relative mb-6">
+                        <img src="cookie.png" alt="Strawberry Lemonade" id="cookie4"
+                            class="w-56 mx-auto filter drop-shadow-xl hover:drop-shadow-2xl hover:scale-105 transition-all">
+                        <div
+                            class="absolute -top-5 right-1/2 transform translate-x-36 bg-[#F4E285] text-dark px-4 py-3 rounded-lg text-xs font-semibold uppercase tracking-wide shadow-md flex items-center gap-2 min-w-[100px]">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="8" />
+                            </svg>
+                            <span>FRUITY</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-dark mb-3">Strawberry Lemonade</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed max-w-xs mx-auto">chocolate chip with sea salt and
+                        toasted pecans.</p>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="text-center transition-all hover:-translate-y-2 cursor-pointer">
+                    <div class="relative mb-6">
+                        <img src="cookie.png" alt="Birthday Party" id="cookie5"
+                            class="w-56 mx-auto filter drop-shadow-xl hover:drop-shadow-2xl hover:scale-105 transition-all">
+                        <div
+                            class="absolute -top-5 right-1/2 transform translate-x-36 bg-[#E8A8D8] text-white px-4 py-3 rounded-lg text-xs font-semibold uppercase tracking-wide shadow-md flex items-center gap-2 min-w-[100px]">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="8" />
+                            </svg>
+                            <span>SPRINKLE</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-dark mb-3">Birthday Party</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed max-w-xs mx-auto">Coconuts, pineapples, mangoes and
+                        dates combine to create an amazing flavor</p>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="text-center transition-all hover:-translate-y-2 cursor-pointer">
+                    <div class="relative mb-6">
+                        <img src="cookie.png" alt="Mocha Cookies" id="cookie6"
+                            class="w-56 mx-auto filter drop-shadow-xl hover:drop-shadow-2xl hover:scale-105 transition-all">
+                        <div
+                            class="absolute -top-5 right-1/2 transform translate-x-36 bg-brown text-white px-4 py-3 rounded-lg text-xs font-semibold uppercase tracking-wide shadow-md flex items-center gap-2 min-w-[100px]">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="8" />
+                            </svg>
+                            <span>Choco<br>Chips</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-dark mb-3">Mocha Cookies n'Cream</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed max-w-xs mx-auto">Oats, raisins, dates, dark
+                        chocolate and smooth Vietnamese cinnamon.</p>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button
+                    class="px-12 py-4 bg-beige text-dark text-sm font-semibold rounded-lg hover:bg-peach hover:-translate-y-0.5 transition-all">MORE
+                    COOKIES</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-32 bg-white" id="about">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <!-- About Image -->
+                <div>
+                    <img src="bakery-interior.png" alt="Our Bakery" id="aboutImg" class="w-full rounded-3xl shadow-2xl">
+                </div>
+
+                <!-- About Content -->
+                <div>
+                    <p class="text-base text-terracotta font-semibold mb-3 tracking-widest uppercase">About Us</p>
+                    <h2 class="font-heading text-5xl font-bold leading-tight text-dark mb-6">Baking Happiness Since 1995
+                    </h2>
+                    <p class="text-base text-gray-600 leading-relaxed mb-5">
+                        We believe that every bite should be a moment of pure joy. Our master bakers use only the finest
+                        ingredients to create treats that remind you of home, comfort, and celebration.
+                    </p>
+                    <p class="text-base text-gray-600 leading-relaxed mb-8">
+                        From our family to yours, we pour love into every recipe, ensuring that each product
+                        delivers the perfect balance of flavor, texture, and nostalgia.
+                    </p>
+                    <ul class="flex flex-col gap-4">
+                        <li class="flex items-center gap-3 text-base font-medium text-dark">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="#D97850" stroke-width="2" />
+                                <path d="M8 12L11 15L16 9" stroke="#D97850" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                            100% Fresh Ingredients
+                        </li>
+                        <li class="flex items-center gap-3 text-base font-medium text-dark">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="#D97850" stroke-width="2" />
+                                <path d="M8 12L11 15L16 9" stroke="#D97850" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                            Handcrafted with Love
+                        </li>
+                        <li class="flex items-center gap-3 text-base font-medium text-dark">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="#D97850" stroke-width="2" />
+                                <path d="M8 12L11 15L16 9" stroke="#D97850" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                            Same-Day Delivery Available
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-32 bg-gradient-to-br from-cream to-beige" id="contact">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="text-base text-terracotta font-semibold mb-3 tracking-widest uppercase">Get In Touch</p>
+                <h2 class="font-heading text-5xl font-bold leading-tight text-dark">Let's Create Something<br>Delicious
+                    Together</h2>
+            </div>
+
+            <div class="grid md:grid-cols-[1.2fr_1fr] gap-16 mt-16">
+                <!-- Contact Form -->
+                <form class="bg-white p-12 rounded-3xl shadow-2xl" id="contactForm">
+                    <div class="grid md:grid-cols-2 gap-5 mb-6">
+                        <div>
+                            <label for="name" class="block text-sm font-semibold text-dark mb-2">Your Name</label>
+                            <input type="text" id="name" name="name" required
+                                class="w-full px-4 py-3.5 border-2 border-gray-200 rounded-lg text-sm transition-colors focus:outline-none focus:border-terracotta">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-semibold text-dark mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full px-4 py-3.5 border-2 border-gray-200 rounded-lg text-sm transition-colors focus:outline-none focus:border-terracotta">
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="phone" class="block text-sm font-semibold text-dark mb-2">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required
+                            class="w-full px-4 py-3.5 border-2 border-gray-200 rounded-lg text-sm transition-colors focus:outline-none focus:border-terracotta">
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-sm font-semibold text-dark mb-2">Your Message</label>
+                        <textarea id="message" name="message" rows="5" required
+                            class="w-full px-4 py-3.5 border-2 border-gray-200 rounded-lg text-sm transition-colors focus:outline-none focus:border-terracotta resize-y min-h-[120px]"></textarea>
+                    </div>
+                    <button type="submit"
+                        class="px-14 py-4.5 bg-terracotta text-white text-base font-semibold rounded-lg hover:bg-brown hover:-translate-y-0.5 transition-all shadow-md hover:shadow-lg">Send
+                        Message</button>
+                </form>
+
+                <!-- Contact Info -->
+                <div class="flex flex-col gap-6">
+                    <div
+                        class="bg-white p-8 rounded-2xl shadow-lg hover:-translate-y-1 hover:shadow-2xl transition-all">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-br from-cream to-beige rounded-full flex items-center justify-center mb-5">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <circle cx="16" cy="16" r="14" stroke="#D97850" stroke-width="2" />
+                                <path d="M16 8V16L20 20" stroke="#D97850" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-bold text-dark mb-3">Opening Hours</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed">Mon - Sat: 7:00 AM - 9:00 PM</p>
+                        <p class="text-sm text-gray-600 leading-relaxed">Sunday: 8:00 AM - 6:00 PM</p>
+                    </div>
+
+                    <div
+                        class="bg-white p-8 rounded-2xl shadow-lg hover:-translate-y-1 hover:shadow-2xl transition-all">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-br from-cream to-beige rounded-full flex items-center justify-center mb-5">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <rect x="6" y="8" width="20" height="16" rx="2" stroke="#D97850" stroke-width="2" />
+                                <path d="M6 8L16 16L26 8" stroke="#D97850" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-bold text-dark mb-3">Email Us</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed">info@bakerydelight.com</p>
+                        <p class="text-sm text-gray-600 leading-relaxed">orders@bakerydelight.com</p>
+                    </div>
+
+                    <div
+                        class="bg-white p-8 rounded-2xl shadow-lg hover:-translate-y-1 hover:shadow-2xl transition-all">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-br from-cream to-beige rounded-full flex items-center justify-center mb-5">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <path
+                                    d="M12 8C12 8 14 6 16 6C18 6 20 8 20 8C20 8 22 10 22 12C22 14 20 16 20 16L16 20L12 16C12 16 10 14 10 12C10 10 12 8 12 8Z"
+                                    stroke="#D97850" stroke-width="2" />
+                                <circle cx="16" cy="12" r="2" fill="#D97850" />
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-bold text-dark mb-3">Visit Us</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed">123 Baker Street</p>
+                        <p class="text-sm text-gray-600 leading-relaxed">Downtown, City 12345</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 pb-16 border-b border-white/10">
+                <!-- Footer Col 1 -->
+                <div>
+                    <div class="flex items-center gap-3 font-bold text-lg tracking-wide text-white mb-5">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 5L25 15H15L20 5Z" fill="#D97850" />
+                            <rect x="10" y="15" width="20" height="20" rx="2" fill="#E8A87C" />
+                            <circle cx="20" cy="25" r="3" fill="#D97850" />
+                        </svg>
+                        <span>BAKERY DELIGHT</span>
+                    </div>
+                    <p class="text-sm leading-relaxed text-white/70 mb-6">Baking happiness into every moment since 1995.
+                        Experience the finest home-baked goodness.</p>
+                    <div class="flex gap-3">
+                        <a href="#" aria-label="Facebook"
+                            class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-terracotta hover:-translate-y-1 transition-all">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram"
+                            class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-terracotta hover:-translate-y-1 transition-all">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" />
+                                <circle cx="12" cy="12" r="4" />
+                                <circle cx="18" cy="6" r="1" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter"
+                            class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-terracotta hover:-translate-y-1 transition-all">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Footer Col 2 -->
+                <div>
+                    <h4 class="text-lg font-bold mb-5">Quick Links</h4>
+                    <ul class="flex flex-col gap-3">
+                        <li><a href="#home"
+                                class="text-sm text-white/70 hover:text-terracotta hover:pl-1 transition-all">Home</a>
+                        </li>
+                        <li><a href="#about"
+                                class="text-sm text-white/70 hover:text-terracotta hover:pl-1 transition-all">About
+                                Us</a></li>
+                        <li><a href="#services"
+                                class="text-sm text-white/70 hover:text-terracotta hover:pl-1 transition-all">Services</a>
+                        </li>
+                        <li><a href="#products"
+                                class="text-sm text-white/70 hover:text-terracotta hover:pl-1 transition-all">Products</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Footer Col 3 -->
+                <div>
+                    <h4 class="text-lg font-bold mb-5">Services</h4>
+                    <ul class="flex flex-col gap-3">
+                        <li><a href="#"
+                                class="text-sm text-white/70 hover:text-terracotta hover:pl-1 transition-all">Custom
+                                Cakes</a></li>
+                        <li><a href="#"
+                                class="text-sm text-white/70 hover:text-terracotta hover:pl-1 transition-all">Wedding
+                                Cakes</a></li>
+                        <li><a href="#"
+                                class="text-sm text-white/70 hover:text-terracotta hover:pl-1 transition-all">Corporate
+                                Orders</a></li>
+                        <li><a href="#"
+                                class="text-sm text-white/70 hover:text-terracotta hover:pl-1 transition-all">Catering</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Footer Col 4 -->
+                <div>
+                    <h4 class="text-lg font-bold mb-5">Newsletter</h4>
+                    <p class="text-sm text-white/70 leading-relaxed mb-6">Subscribe to get special offers and updates.
+                    </p>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Your email address" required
+                            class="flex-1 px-4 py-3 border-2 border-white/20 rounded-lg bg-white/5 text-white text-sm placeholder:text-white/50 focus:outline-none focus:border-terracotta">
+                        <button type="submit"
+                            class="px-6 py-3 bg-terracotta text-white text-sm font-semibold rounded-lg hover:bg-brown transition-colors">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="py-6 text-center">
+                <p class="text-sm text-white/50">&copy; 2026 Bakery Delight. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

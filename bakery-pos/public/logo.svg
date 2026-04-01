@@ -1,0 +1,75 @@
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Transparent Background -->
+  <rect width="500" height="500" fill="transparent"/>
+  
+  <!-- Top Arc Text: PURE INGREDIENTS -->
+  <path id="topCurve" d="M 100 180 Q 250 120 400 180" fill="none"/>
+  <text font-family="Georgia, serif" font-size="16" font-weight="600" fill="#6B4423" letter-spacing="2">
+    <textPath href="#topCurve" startOffset="50%" text-anchor="middle">
+      PURE INGREDIENTS
+    </textPath>
+  </text>
+  
+  <!-- Top Arc Text: PURE JOY -->
+  <path id="topCurve2" d="M 100 180 Q 250 120 400 180" fill="none"/>
+  <text font-family="Georgia, serif" font-size="16" font-weight="600" fill="#6B4423" letter-spacing="2">
+    <textPath href="#topCurve2" startOffset="50%" text-anchor="middle" dy="20">
+      PURE JOY
+    </textPath>
+  </text>
+  
+  <!-- Pastry Illustration -->
+  <g transform="translate(250, 220)">
+    <!-- Croissant/Pastry -->
+    <ellipse cx="0" cy="0" rx="60" ry="40" fill="none" stroke="#6B4423" stroke-width="2.5"/>
+    <path d="M -40,-10 Q -20,0 -40,10" fill="none" stroke="#6B4423" stroke-width="2"/>
+    <path d="M -20,-15 Q 0,0 -20,15" fill="none" stroke="#6B4423" stroke-width="2"/>
+    <path d="M 0,-20 Q 20,0 0,20" fill="none" stroke="#6B4423" stroke-width="2"/>
+    <path d="M 20,-15 Q 40,0 20,15" fill="none" stroke="#6B4423" stroke-width="2"/>
+    
+    <!-- Flowers -->
+    <g transform="translate(-70, -30)">
+      <circle cx="0" cy="0" r="3" fill="#6B4423"/>
+      <circle cx="0" cy="-8" r="4" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+      <circle cx="-6" cy="-4" r="4" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+      <circle cx="6" cy="-4" r="4" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+      <circle cx="-4" cy="4" r="4" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+      <circle cx="4" cy="4" r="4" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+    </g>
+    
+    <g transform="translate(70, -25)">
+      <circle cx="0" cy="0" r="3" fill="#6B4423"/>
+      <circle cx="0" cy="-8" r="4" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+      <circle cx="-6" cy="-4" r="4" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+      <circle cx="6" cy="-4" r="4" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+      <circle cx="-4" cy="4" r="4" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+      <circle cx="4" cy="4" r="4" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+    </g>
+    
+    <!-- Wheat -->
+    <g transform="translate(-80, 10)">
+      <line x1="0" y1="0" x2="0" y2="35" stroke="#6B4423" stroke-width="2"/>
+      <ellipse cx="-3" cy="5" rx="4" ry="6" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+      <ellipse cx="3" cy="10" rx="4" ry="6" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+      <ellipse cx="-3" cy="15" rx="4" ry="6" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+      <ellipse cx="3" cy="20" rx="4" ry="6" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+    </g>
+    
+    <g transform="translate(75, 15)">
+      <line x1="0" y1="0" x2="0" y2="30" stroke="#6B4423" stroke-width="2"/>
+      <ellipse cx="-3" cy="5" rx="4" ry="6" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+      <ellipse cx="3" cy="10" rx="4" ry="6" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+      <ellipse cx="-3" cy="15" rx="4" ry="6" fill="none" stroke="#6B4423" stroke-width="1.5"/>
+    </g>
+  </g>
+  
+  <!-- Main Text: Tins & Trays -->
+  <text x="250" y="330" font-family="'Brush Script MT', cursive" font-size="64" fill="#6B4423" text-anchor="middle" font-style="italic">
+    Tins &amp; Trays
+  </text>
+  
+  <!-- ESTD 2021 -->
+  <text x="250" y="370" font-family="Georgia, serif" font-size="18" fill="#6B4423" text-anchor="middle" letter-spacing="4" font-weight="600">
+    ESTD 2021
+  </text>
+</svg>
