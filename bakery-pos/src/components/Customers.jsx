@@ -78,21 +78,17 @@ function Customers() {
         setEditingCustomer(null);
     };
 
-    const getTierColor = (tier) => {
-        switch (tier) {
-            case 'Gold': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-            case 'Silver': return 'bg-gray-100 text-gray-800 border-gray-200';
-            case 'Bronze': return 'bg-orange-100 text-orange-800 border-orange-200';
-            default: return 'bg-blue-100 text-blue-800 border-blue-200';
-        }
+    const getTierColor = () => {
+        // All tiers use Win2000 badge style
+        return '';
     };
 
     if (loading) {
         return (
-            <div className="flex items-center justify-center min-h-screen">
-                <div className="text-center">
-                    <div className="w-14 h-14 border-4 border-sky-200 border-t-sky-600 rounded-full animate-spin mx-auto mb-4"></div>
-                    <p className="text-gray-600">Loading customers...</p>
+            <div className="flex items-center justify-center min-h-64">
+                <div className="win-window p-4 text-center text-sm">
+                    <div className="mb-2">Please wait...</div>
+                    <div className="win-panel-sunken p-1 text-xs">Loading customers</div>
                 </div>
             </div>
         );
@@ -138,9 +134,9 @@ function Customers() {
                     </div>
                 </div>
 
-                <div className="card p-6 bg-primary-50 border border-primary-100">
-                    <h3 className="text-lg font-bold text-primary-900 mb-2">Total Customers</h3>
-                    <p className="text-4xl font-bold text-primary-600">{customers.length}</p>
+                <div className="win-window p-3">
+                    <div className="win-titlebar text-xs mb-2">Total Customers</div>
+                    <p className="text-3xl font-bold text-center py-2">{customers.length}</p>
                 </div>
             </div>
 
@@ -177,7 +173,7 @@ function Customers() {
                                         </td>
                                         <td className="text-dark-700">{customer.phone}</td>
                                         <td>
-                                            <span className={`px-2 py-1 rounded-full text-xs font-semibold border ${getTierColor(customer.tier)}`}>
+                                            <span className="badge">
                                                 {customer.tier || 'Regular'}
                                             </span>
                                         </td>

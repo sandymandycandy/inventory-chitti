@@ -258,10 +258,10 @@ function Bills() {
 
     if (loading) {
         return (
-            <div className="flex items-center justify-center min-h-screen">
-                <div className="text-center">
-                    <div className="w-14 h-14 border-4 border-sky-200 border-t-sky-600 rounded-full animate-spin mx-auto mb-4"></div>
-                    <p className="text-gray-600">Loading bills...</p>
+            <div className="flex items-center justify-center min-h-64">
+                <div className="win-window p-4 text-center text-sm">
+                    <div className="mb-2">Please wait...</div>
+                    <div className="win-panel-sunken p-1 text-xs">Loading bills</div>
                 </div>
             </div>
         );
@@ -312,14 +312,14 @@ function Bills() {
 
             {/* Bills List */}
             {filteredBills.length === 0 ? (
-                <div className="card p-12 text-center">
-                    <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg className="w-10 h-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="card p-8 text-center">
+                    <div className="win-panel-sunken w-12 h-12 flex items-center justify-center mx-auto mb-3">
+                        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                     </div>
-                    <h3 className="text-xl font-semibold text-dark-900 mb-2">No Bills Found</h3>
-                    <p className="text-gray-600">
+                    <h3 className="text-sm font-bold mb-1">No Bills Found</h3>
+                    <p className="text-xs">
                         {searchTerm || dateFilter !== 'all'
                             ? 'Try adjusting your search or filters'
                             : 'Bills will appear here when orders are created'}
@@ -417,36 +417,36 @@ function Bills() {
                                     <p className="font-semibold text-dark-900 mb-2">Items</p>
                                     <div className="space-y-2">
                                         {selectedBill.items.map((item, idx) => (
-                                            <div key={idx} className="flex justify-between p-3 bg-gray-50 rounded-lg">
+                                            <div key={idx} className="win-panel-raised flex justify-between p-2 text-xs">
                                                 <div>
-                                                    <p className="font-medium text-dark-900">{item.name}</p>
-                                                    <p className="text-sm text-gray-600">{item.quantity} × {formatCurrency(item.price)}</p>
+                                                    <p className="font-bold">{item.name}</p>
+                                                    <p>{item.quantity} × {formatCurrency(item.price)}</p>
                                                 </div>
-                                                <p className="font-semibold text-dark-900">{formatCurrency(item.total)}</p>
+                                                <p className="font-bold">{formatCurrency(item.total)}</p>
                                             </div>
                                         ))}
                                     </div>
                                 </div>
 
-                                <div className="border-t border-gray-200 pt-4">
-                                    <div className="space-y-2">
-                                        <div className="flex justify-between text-sm">
-                                            <span className="text-gray-600">Subtotal:</span>
-                                            <span className="font-medium">{formatCurrency(selectedBill.subtotal)}</span>
+                                <div className="win-panel-sunken p-2 mt-2">
+                                    <div className="space-y-1 text-xs">
+                                        <div className="flex justify-between">
+                                            <span>Subtotal:</span>
+                                            <span className="font-bold">{formatCurrency(selectedBill.subtotal)}</span>
                                         </div>
                                         {selectedBill.packingCharges > 0 && (
-                                            <div className="flex justify-between text-sm">
-                                                <span className="text-gray-600">Packing Charges:</span>
-                                                <span className="font-medium">{formatCurrency(selectedBill.packingCharges)}</span>
+                                            <div className="flex justify-between">
+                                                <span>Packing Charges:</span>
+                                                <span className="font-bold">{formatCurrency(selectedBill.packingCharges)}</span>
                                             </div>
                                         )}
-                                        <div className="flex justify-between text-sm">
-                                            <span className="text-gray-600">Tax:</span>
-                                            <span className="font-medium">{formatCurrency(selectedBill.tax)}</span>
+                                        <div className="flex justify-between">
+                                            <span>Tax:</span>
+                                            <span className="font-bold">{formatCurrency(selectedBill.tax)}</span>
                                         </div>
-                                        <div className="flex justify-between text-lg font-bold border-t border-gray-200 pt-2">
-                                            <span>Total:</span>
-                                            <span className="text-primary-600">{formatCurrency(selectedBill.total)}</span>
+                                        <div className="flex justify-between font-bold border-t border-[#808080] pt-1">
+                                            <span>TOTAL:</span>
+                                            <span>{formatCurrency(selectedBill.total)}</span>
                                         </div>
                                     </div>
                                 </div>

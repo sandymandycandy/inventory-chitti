@@ -112,10 +112,10 @@ function UserManagement() {
 
     if (loading) {
         return (
-            <div className="flex items-center justify-center min-h-screen">
-                <div className="text-center">
-                    <div className="w-14 h-14 border-4 border-sky-200 border-t-sky-600 rounded-full animate-spin mx-auto mb-4"></div>
-                    <p className="text-slate-600 font-medium">Loading users...</p>
+            <div className="flex items-center justify-center min-h-64">
+                <div className="win-window p-4 text-center text-sm">
+                    <div className="mb-2">Please wait...</div>
+                    <div className="win-panel-sunken p-1 text-xs">Loading users</div>
                 </div>
             </div>
         );

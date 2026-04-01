@@ -153,10 +153,10 @@ function PurchaseBills() {
 
     if (loading) {
         return (
-            <div className="flex items-center justify-center min-h-screen">
-                <div className="text-center">
-                    <div className="w-14 h-14 border-4 border-sky-200 border-t-sky-600 rounded-full animate-spin mx-auto mb-4"></div>
-                    <p className="text-gray-600">Loading purchase bills...</p>
+            <div className="flex items-center justify-center min-h-64">
+                <div className="win-window p-4 text-center text-sm">
+                    <div className="mb-2">Please wait...</div>
+                    <div className="win-panel-sunken p-1 text-xs">Loading purchase bills</div>
                 </div>
             </div>
         );
@@ -202,14 +202,14 @@ function PurchaseBills() {
 
             {/* Bills List */}
             {bills.length === 0 ? (
-                <div className="card p-12 text-center">
-                    <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg className="w-10 h-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="card p-8 text-center">
+                    <div className="win-panel-sunken w-12 h-12 flex items-center justify-center mx-auto mb-3">
+                        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                     </div>
-                    <h3 className="text-xl font-semibold text-dark-900 mb-2">No Purchase Bills Yet</h3>
-                    <p className="text-gray-600 mb-6">Record your first ingredient purchase</p>
+                    <h3 className="text-sm font-bold mb-1">No Purchase Bills Yet</h3>
+                    <p className="text-xs mb-4">Record your first ingredient purchase</p>
                     <button onClick={() => setShowModal(true)} className="btn btn-primary">
                         Create First Purchase Bill
                     </button>
@@ -303,11 +303,11 @@ function PurchaseBills() {
                                         {ingredients.map(ingredient => (
                                             <div
                                                 key={ingredient._id}
-                                                className="p-3 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer"
+                                                className="win-panel-raised p-2 cursor-pointer hover:bg-[#000080] hover:text-white text-xs"
                                                 onClick={() => addToCart(ingredient)}
                                             >
-                                                <p className="font-semibold text-dark-900">{ingredient.name}</p>
-                                                <p className="text-xs text-gray-600">Current: {ingredient.currentStock} {ingredient.unit}</p>
+                                                <p className="font-bold">{ingredient.name}</p>
+                                                <p>Current: {ingredient.currentStock} {ingredient.unit}</p>
                                             </div>
                                         ))}
                                     </div>
