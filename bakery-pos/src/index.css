@@ -1,381 +1,525 @@
-/* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap');
+/* Windows 2000 Style - Classic Microsoft UI */
+@import url('https://fonts.googleapis.com/css2?family=Tahoma:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  * {
+    box-sizing: border-box;
+  }
+
   body {
-    @apply bg-gradient-to-br from-slate-50 via-sky-50/30 to-blue-50/20 text-slate-800 font-sans antialiased;
+    background-color: #008080; /* Classic Windows teal desktop */
+    color: #000000;
+    font-family: 'Tahoma', 'MS Sans Serif', 'Arial', sans-serif;
+    font-size: 11px;
     min-height: 100vh;
-    background-attachment: fixed;
-    letter-spacing: -0.011em;
+    letter-spacing: 0;
+    line-height: 1.3;
   }
 
-  h1 {
-    @apply text-slate-900 font-bold;
-    font-family: 'Outfit', 'Inter', system-ui, sans-serif;
-    font-size: 2.25rem;
-    line-height: 2.5rem;
-    letter-spacing: -0.025em;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Tahoma', 'MS Sans Serif', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: #000000;
   }
 
-  h2 {
-    @apply text-slate-900 font-semibold;
-    font-family: 'Outfit', 'Inter', system-ui, sans-serif;
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-    letter-spacing: -0.022em;
-  }
-
-  h3 {
-    @apply text-slate-800 font-semibold;
-    font-family: 'Outfit', 'Inter', system-ui, sans-serif;
-    font-size: 1.5rem;
-    line-height: 2rem;
-    letter-spacing: -0.019em;
-  }
-
-  h4,
-  h5,
-  h6 {
-    @apply text-slate-800 font-medium;
-    font-family: 'Outfit', 'Inter', system-ui, sans-serif;
-    letter-spacing: -0.014em;
-  }
-
-  /* Custom Scrollbar - Sleek */
+  /* Standard scrollbar */
   ::-webkit-scrollbar {
-    @apply w-1.5 h-1.5;
+    width: 16px;
+    height: 16px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-transparent;
+    background: #c0c0c0;
+    border-left: 1px solid #808080;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-slate-300 rounded-full transition-colors hover:bg-slate-400;
+    background: #c0c0c0;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #404040;
+    border-bottom: 1px solid #404040;
+  }
+
+  ::-webkit-scrollbar-button {
+    background: #c0c0c0;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #404040;
+    border-bottom: 1px solid #404040;
+    width: 16px;
+    height: 16px;
   }
 }
 
 @layer components {
-
-  /* --- Premium Buttons --- */
-  .btn {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
-    min-height: 48px;
-    letter-spacing: -0.011em;
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
+  /* --- Windows 2000 Window / Panel --- */
+  .win-window {
+    background-color: #d4d0c8;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+    box-shadow: 1px 1px 0 #808080;
   }
 
-  /* Mobile Button Optimization */
-  @media (max-width: 768px) {
-    .btn {
-      @apply px-4 py-3 text-base;
-      min-height: 48px;
-    }
-    
-    .btn-sm {
-      @apply px-3 py-2 text-sm;
-      min-height: 44px;
-    }
+  .win-panel-raised {
+    background-color: #d4d0c8;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+  }
+
+  .win-panel-sunken {
+    background-color: #ffffff;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+  }
+
+  /* --- Titlebar --- */
+  .win-titlebar {
+    background: linear-gradient(to right, #000080, #1084d0);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 4px 4px 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    user-select: none;
+  }
+
+  .win-titlebar-inactive {
+    background: linear-gradient(to right, #808080, #b0b0b0);
+  }
+
+  /* --- Titlebar Buttons (minimize/maximize/close) --- */
+  .win-title-btn {
+    width: 16px;
+    height: 14px;
+    background-color: #d4d0c8;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #404040;
+    border-bottom: 1px solid #404040;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 9px;
+    font-weight: 700;
+    color: #000000;
+    flex-shrink: 0;
+  }
+
+  .win-title-btn:active {
+    border-top: 1px solid #404040;
+    border-left: 1px solid #404040;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+  }
+
+  /* --- Buttons --- */
+  .btn {
+    background-color: #d4d0c8;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #404040;
+    border-bottom: 1px solid #404040;
+    color: #000000;
+    font-family: 'Tahoma', sans-serif;
+    font-size: 11px;
+    padding: 4px 12px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    white-space: nowrap;
+    min-height: 23px;
+    box-shadow: 1px 1px 0 #808080;
+    outline: none;
+  }
+
+  .btn:hover {
+    background-color: #dcdad5;
+  }
+
+  .btn:active,
+  .btn:focus:not(:disabled) {
+    border-top: 1px solid #404040;
+    border-left: 1px solid #404040;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    padding-top: 5px;
+    padding-left: 13px;
+  }
+
+  .btn:disabled {
+    color: #808080;
+    text-shadow: 1px 1px 0 #ffffff;
+    cursor: default;
   }
 
   .btn-primary {
-    @apply bg-gradient-to-r from-sky-500 via-blue-500 to-blue-600 text-white hover:-translate-y-0.5 border-0;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05), 0 4px 12px 0 rgba(14, 165, 233, 0.35);
+    background-color: #d4d0c8;
+    border: 2px solid #000080;
+    font-weight: 700;
   }
 
   .btn-primary:hover {
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.06), 0 8px 20px 0 rgba(14, 165, 233, 0.45);
-    @apply from-sky-600 via-blue-600 to-blue-700;
+    background-color: #dcdad5;
   }
 
   .btn-secondary {
-    @apply bg-white text-slate-700 border border-slate-200 shadow-sm hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900;
+    background-color: #d4d0c8;
   }
 
   .btn-ghost {
-    @apply text-slate-600 hover:bg-slate-100 hover:text-slate-900;
+    background-color: transparent;
+    border: 1px solid transparent;
+    box-shadow: none;
+  }
+
+  .btn-ghost:hover {
+    background-color: #d4d0c8;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #404040;
+    border-bottom: 1px solid #404040;
   }
 
   .btn-sm {
-    @apply px-3 py-1.5 text-xs font-semibold uppercase tracking-wide;
-    min-height: 32px;
+    padding: 2px 8px;
+    font-size: 11px;
+    min-height: 20px;
   }
 
-  /* --- Professional Cards --- */
+  /* --- Cards (Windows Panels) --- */
   .card {
-    @apply bg-white rounded-2xl border border-slate-200/60 transition-all duration-300;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
-  }
-
-  .card-hover {
-    @apply hover:border-slate-300/60 hover:-translate-y-1;
+    background-color: #d4d0c8;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+    border-radius: 0;
+    box-shadow: 1px 1px 0 #808080;
   }
 
   .card-hover:hover {
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(14, 165, 233, 0.05);
+    background-color: #dcdad5;
   }
 
   .stat-card {
-    @apply card p-7 relative overflow-hidden;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 1) 100%);
+    background-color: #d4d0c8;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+    border-radius: 0;
+    box-shadow: 1px 1px 0 #808080;
+    padding: 12px;
+    position: relative;
+    overflow: hidden;
   }
 
   .glass-panel {
-    @apply bg-white/80 backdrop-blur-md border border-white/50 shadow-xl;
+    background-color: #d4d0c8;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+    box-shadow: 1px 1px 0 #808080;
   }
 
-  /* --- Professional Inputs --- */
+  /* --- Inputs --- */
   .input {
-    @apply w-full px-4 py-3 bg-white border border-slate-300/60 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:border-sky-400 focus:ring-4 focus:ring-sky-100 transition-all;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
-    font-size: 16px;
-    letter-spacing: -0.011em;
-    min-height: 48px;
+    background-color: #ffffff;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    border-radius: 0;
+    color: #000000;
+    font-family: 'Tahoma', sans-serif;
+    font-size: 11px;
+    padding: 3px 4px;
+    width: 100%;
+    outline: none;
+    min-height: 22px;
+    box-shadow: inset 1px 1px 0 #404040;
     -webkit-appearance: none;
-    -webkit-tap-highlight-color: transparent;
   }
 
   .input:focus {
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04), 0 0 0 3px rgba(14, 165, 233, 0.08);
+    outline: 1px dotted #000000;
+    outline-offset: -2px;
+    box-shadow: inset 1px 1px 0 #404040;
   }
 
   .label {
-    @apply block mb-1.5 font-medium text-slate-700 text-sm;
-  }
-
-  /* Mobile Input/Select Optimization */
-  @media (max-width: 768px) {
-    .input, select, textarea {
-      @apply text-base px-4 py-3;
-      font-size: 16px !important;
-      min-height: 48px;
-    }
-    
-    .label {
-      @apply text-sm font-semibold mb-2;
-    }
+    display: block;
+    margin-bottom: 2px;
+    font-weight: 400;
+    font-size: 11px;
+    color: #000000;
   }
 
   /* --- Badges --- */
   .badge {
-    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold tracking-wide border border-transparent;
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 4px;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 0;
+    border: 1px solid #808080;
+    background-color: #c0c0c0;
+    color: #000000;
   }
 
   .badge-success {
-    @apply bg-emerald-50 text-emerald-700 border-emerald-100;
+    background-color: #008000;
+    color: #ffffff;
+    border-color: #006000;
   }
 
   .badge-warning {
-    @apply bg-amber-50 text-amber-700 border-amber-100;
+    background-color: #c0a000;
+    color: #ffffff;
+    border-color: #806000;
   }
 
   .badge-danger {
-    @apply bg-red-50 text-red-700 border-red-100;
+    background-color: #c00000;
+    color: #ffffff;
+    border-color: #800000;
   }
 
   .badge-info {
-    @apply bg-blue-50 text-blue-700 border-blue-100;
+    background-color: #000080;
+    color: #ffffff;
+    border-color: #000060;
   }
 
-  /* --- Professional Tables --- */
+  /* --- Tables --- */
   .table-container {
-    @apply rounded-2xl border border-slate-200/60 overflow-hidden bg-white;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+    background-color: #ffffff;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: inset 1px 1px 0 #404040;
   }
 
   .table {
-    @apply w-full border-collapse text-left;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 11px;
   }
 
   .table thead {
-    @apply bg-gradient-to-b from-slate-50 to-slate-100/50 border-b border-slate-200/80 text-xs uppercase tracking-wider font-bold text-slate-600;
+    background-color: #d4d0c8;
+    border-bottom: 1px solid #808080;
+    font-size: 11px;
+    font-weight: 700;
+    color: #000000;
+    text-transform: none;
+    letter-spacing: 0;
   }
 
   .table th {
-    @apply px-6 py-4;
-    letter-spacing: 0.03em;
+    padding: 4px 8px;
+    border-right: 1px solid #808080;
+    background: linear-gradient(to bottom, #e8e6e0, #d4d0c8);
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    font-weight: 700;
+    white-space: nowrap;
   }
 
   .table td {
-    @apply px-6 py-5 border-b border-slate-100/80 text-sm text-slate-700 transition-all duration-150;
-    letter-spacing: -0.011em;
-  }
-
-  .table tbody tr:last-child td {
-    @apply border-b-0;
+    padding: 3px 8px;
+    border-bottom: 1px solid #e8e6e0;
+    border-right: 1px solid #e8e6e0;
+    font-size: 11px;
+    color: #000000;
+    transition: none;
+    letter-spacing: 0;
   }
 
   .table tbody tr:hover {
-    @apply bg-sky-50/40;
+    background-color: #000080;
   }
 
   .table tbody tr:hover td {
-    @apply text-slate-900;
+    color: #ffffff;
   }
 
-  /* --- Professional Modals --- */
+  .table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  /* --- Modals (Windows Dialog Boxes) --- */
   .modal-overlay {
-    @apply fixed inset-0 bg-slate-900/50 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-fade-in;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
   }
 
   .modal-content {
-    @apply bg-white rounded-3xl max-w-2xl w-full animate-scale-in border border-slate-200/60;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    background-color: #d4d0c8;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+    border-radius: 0;
+    max-width: 42rem;
+    width: 100%;
     max-height: 90vh;
     overflow-y: auto;
-  }
-
-  /* Mobile Modal Optimization */
-  @media (max-width: 768px) {
-    .modal-overlay {
-      @apply p-2;
-    }
-    
-    .modal-content {
-      @apply rounded-2xl max-h-[95vh];
-    }
-    
-    .modal-header {
-      @apply px-4 py-4;
-    }
-    
-    .modal-body {
-      @apply px-4 py-4;
-    }
-    
-    .modal-footer {
-      @apply px-4 py-4 sticky bottom-0 bg-white border-t-2 shadow-lg;
-    }
+    box-shadow: 2px 2px 0 #808080, 4px 4px 8px rgba(0,0,0,0.5);
   }
 
   .modal-header {
-    @apply px-8 py-6 border-b border-slate-200/60 flex items-center justify-between bg-gradient-to-b from-slate-50/50 to-white rounded-t-3xl sticky top-0 z-10;
+    background: linear-gradient(to right, #000080, #1084d0);
+    color: #ffffff;
+    padding: 4px 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 700;
+    position: sticky;
+    top: 0;
+    z-index: 10;
   }
 
   .modal-body {
-    @apply px-8 py-8 overflow-y-auto;
+    padding: 16px;
+    overflow-y: auto;
   }
 
   .modal-footer {
-    @apply px-8 py-6 border-t border-slate-200/60 flex items-center justify-end gap-3 bg-gradient-to-b from-white to-slate-50/50 rounded-b-3xl;
+    padding: 8px 12px;
+    border-top: 1px solid #808080;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    background-color: #d4d0c8;
+  }
+
+  /* --- Menu/Listbox items --- */
+  .win-menu-item {
+    padding: 3px 20px;
+    font-size: 11px;
+    cursor: default;
+    white-space: nowrap;
+  }
+
+  .win-menu-item:hover,
+  .win-menu-item.active {
+    background-color: #000080;
+    color: #ffffff;
+  }
+
+  /* --- Separator --- */
+  .win-separator {
+    height: 0;
+    border-top: 1px solid #808080;
+    border-bottom: 1px solid #ffffff;
+    margin: 4px 0;
+  }
+
+  /* --- Group Box --- */
+  .win-groupbox {
+    border: 1px solid #808080;
+    padding: 8px;
+    position: relative;
+    margin-top: 8px;
+  }
+
+  .win-groupbox-label {
+    position: absolute;
+    top: -8px;
+    left: 8px;
+    background: #d4d0c8;
+    padding: 0 4px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  /* --- Taskbar style --- */
+  .win-taskbar {
+    background: linear-gradient(to bottom, #c0c0c0, #a0a0a0);
+    border-top: 1px solid #ffffff;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
   }
 }
 
 @layer utilities {
+  /* Remove text gradients (not Win2000 style) */
   .text-gradient {
-    @apply bg-gradient-to-br from-slate-900 to-slate-600 bg-clip-text text-transparent;
+    color: #000000;
   }
 
   .text-gradient-primary {
-    @apply bg-gradient-to-br from-primary-600 to-primary-400 bg-clip-text text-transparent;
+    color: #000080;
   }
 
-  /* Sidebar Animations */
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateX(-10px) scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0) scale(1);
-    }
-  }
-
+  /* Animations - minimal, Windows style */
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes scaleIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.1s ease-out;
   }
 
   .animate-fadeIn {
-    animation: fadeIn 0.3s ease-out;
+    animation: fadeIn 0.1s ease-out;
   }
 
-  /* Scrollbar for Sidebar */
+  /* Scrollbar override for sidebar */
   .scrollbar-thin::-webkit-scrollbar {
-    width: 4px;
+    width: 16px;
   }
 
   .scrollbar-thin::-webkit-scrollbar-track {
-    background: transparent;
+    background: #c0c0c0;
   }
 
   .scrollbar-thin::-webkit-scrollbar-thumb {
-    @apply bg-sky-600 rounded-full;
-  }
-
-  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-    @apply bg-sky-500;
-  }
-
-  /* Mobile Optimization */
-  @media (max-width: 768px) {
-    /* Improve touch targets */
-    button, a, [role="button"] {
-      min-height: 44px;
-      min-width: 44px;
-    }
-    
-    /* Better spacing on mobile */
-    .space-y-6 > * + * {
-      margin-top: 1rem;
-    }
-    
-    /* Card responsive padding */
-    .card {
-      @apply p-4;
-    }
-    
-    /* Responsive text sizes */
-    h1 {
-      font-size: 1.75rem;
-      line-height: 2rem;
-    }
-    
-    h2 {
-      font-size: 1.5rem;
-      line-height: 1.75rem;
-    }
-    
-    h3 {
-      font-size: 1.25rem;
-      line-height: 1.5rem;
-    }
-    
-    /* Prevent zoom on input focus (iOS) */
-    input[type="text"],
-    input[type="number"],
-    input[type="email"],
-    input[type="password"],
-    select,
-    textarea {
-      font-size: 16px !important;
-    }
-    
-    /* Better table responsiveness */
-    .table-container {
-      @apply overflow-x-auto -mx-4 rounded-none;
-    }
-    
-    .table th,
-    .table td {
-      @apply px-4 py-3 text-xs;
-    }
-  }
-  
-  /* Landscape mobile optimization */
-  @media (max-width: 768px) and (orientation: landscape) {
-    .modal-content {
-      max-height: 85vh;
-    }
+    background: #c0c0c0;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #404040;
+    border-bottom: 1px solid #404040;
   }
 }

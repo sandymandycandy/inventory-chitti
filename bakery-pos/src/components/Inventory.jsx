@@ -109,10 +109,10 @@ function Inventory() {
 
     if (loading) {
         return (
-            <div className="flex items-center justify-center min-h-screen">
-                <div className="text-center">
-                    <div className="w-14 h-14 border-4 border-sky-200 border-t-sky-600 rounded-full animate-spin mx-auto mb-4"></div>
-                    <p className="text-gray-600">Loading inventory...</p>
+            <div className="flex items-center justify-center min-h-64">
+                <div className="win-window p-4 text-center text-sm">
+                    <div className="mb-2">Please wait...</div>
+                    <div className="win-panel-sunken p-1 text-xs">Loading inventory</div>
                 </div>
             </div>
         );
@@ -142,14 +142,14 @@ function Inventory() {
 
             {/* Inventory Table */}
             {ingredients.length === 0 ? (
-                <div className="card p-12 text-center">
-                    <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg className="w-10 h-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="card p-8 text-center">
+                    <div className="win-panel-sunken w-12 h-12 flex items-center justify-center mx-auto mb-3">
+                        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                         </svg>
                     </div>
-                    <h3 className="text-xl font-semibold text-dark-900 mb-2">No Ingredients Yet</h3>
-                    <p className="text-gray-600 mb-6">Add your first ingredient to start tracking inventory</p>
+                    <h3 className="text-sm font-bold mb-1">No Ingredients Yet</h3>
+                    <p className="text-xs mb-4">Add your first ingredient to start tracking inventory</p>
                     <button onClick={() => setShowModal(true)} className="btn btn-primary">
                         Add First Ingredient
                     </button>
@@ -186,7 +186,6 @@ function Inventory() {
                                                         status === 'low' ? 'badge-warning' :
                                                             'badge-danger'
                                                     }`}>
-                                                    <div className="w-2 h-2 rounded-full bg-current"></div>
                                                     {status === 'good' ? 'In Stock' :
                                                         status === 'low' ? 'Low Stock' :
                                                             'Out of Stock'}

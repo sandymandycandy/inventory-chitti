@@ -115,10 +115,10 @@ function ProductPricing() {
 
     if (loading) {
         return (
-            <div className="flex items-center justify-center min-h-screen">
-                <div className="text-center">
-                    <div className="w-14 h-14 border-4 border-sky-200 border-t-sky-600 rounded-full animate-spin mx-auto mb-4"></div>
-                    <p className="text-slate-600 font-medium">Loading products...</p>
+            <div className="flex items-center justify-center min-h-64">
+                <div className="win-window p-4 text-center text-sm">
+                    <div className="mb-2">Please wait...</div>
+                    <div className="win-panel-sunken p-1 text-xs">Loading products</div>
                 </div>
             </div>
         );
@@ -147,43 +147,43 @@ function ProductPricing() {
             </div>
 
             {/* Statistics Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="card p-6 bg-gradient-to-br from-sky-50 to-blue-50">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div className="stat-card">
                     <div className="flex items-center justify-between">
                         <div>
-                            <p className="text-sm text-gray-600 mb-1">Total Products</p>
-                            <p className="text-3xl font-bold text-primary-600">{totalProducts}</p>
+                            <p className="text-xs mb-1">Total Products</p>
+                            <p className="text-2xl font-bold">{totalProducts}</p>
                         </div>
-                        <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center">
-                            <svg className="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div className="win-panel-sunken w-10 h-10 flex items-center justify-center">
+                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                             </svg>
                         </div>
                     </div>
                 </div>
 
-                <div className="card p-6 bg-gradient-to-br from-green-50 to-emerald-50">
+                <div className="stat-card">
                     <div className="flex items-center justify-between">
                         <div>
-                            <p className="text-sm text-gray-600 mb-1">Profitable Products</p>
-                            <p className="text-3xl font-bold text-green-600">{profitableProducts}</p>
+                            <p className="text-xs mb-1">Profitable Products</p>
+                            <p className="text-2xl font-bold">{profitableProducts}</p>
                         </div>
-                        <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
-                            <svg className="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div className="win-panel-sunken w-10 h-10 flex items-center justify-center">
+                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                             </svg>
                         </div>
                     </div>
                 </div>
 
-                <div className="card p-6 bg-gradient-to-br from-amber-50 to-yellow-50">
+                <div className="stat-card">
                     <div className="flex items-center justify-between">
                         <div>
-                            <p className="text-sm text-gray-600 mb-1">Avg Profit Margin</p>
-                            <p className="text-3xl font-bold text-amber-600">{averageMargin.toFixed(1)}%</p>
+                            <p className="text-xs mb-1">Avg Profit Margin</p>
+                            <p className="text-2xl font-bold">{averageMargin.toFixed(1)}%</p>
                         </div>
-                        <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center">
-                            <svg className="w-6 h-6 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div className="win-panel-sunken w-10 h-10 flex items-center justify-center">
+                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                             </svg>
                         </div>
@@ -263,19 +263,9 @@ function ProductPricing() {
                                             </td>
                                             <td className="text-center">
                                                 {isProfit ? (
-                                                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">
-                                                        <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                                        </svg>
-                                                        Profitable
-                                                    </span>
+                                                    <span className="badge badge-success">Profitable</span>
                                                 ) : (
-                                                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-800">
-                                                        <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                                                        </svg>
-                                                        Loss
-                                                    </span>
+                                                    <span className="badge badge-danger">Loss</span>
                                                 )}
                                             </td>
                                             <td className="text-right">
@@ -411,12 +401,9 @@ function ProductPricing() {
                                         </div>
                                     </div>
                                     {calculateProfit(formData.sellingPrice, formData.productionCost).amount < 0 && (
-                                        <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
-                                            <p className="text-sm text-red-700 flex items-center">
-                                                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                                                </svg>
-                                                Warning: This product will result in a loss!
+                                        <div className="mt-3 win-panel-raised p-2 border-l-4 border-[#c00000]">
+                                            <p className="text-xs font-bold flex items-center gap-1">
+                                                ⚠ Warning: This product will result in a loss!
                                             </p>
                                         </div>
                                     )}

@@ -196,10 +196,10 @@ function Orders() {
 
     if (loading) {
         return (
-            <div className="flex items-center justify-center min-h-screen">
-                <div className="text-center">
-                    <div className="w-14 h-14 border-4 border-sky-200 border-t-sky-600 rounded-full animate-spin mx-auto mb-4"></div>
-                    <p className="text-gray-600">Loading orders...</p>
+            <div className="flex items-center justify-center min-h-64">
+                <div className="win-window p-4 text-center text-sm">
+                    <div className="mb-2">Please wait...</div>
+                    <div className="win-panel-sunken p-1 text-xs">Loading orders</div>
                 </div>
             </div>
         );
@@ -226,14 +226,14 @@ function Orders() {
 
             {/* Orders List */}
             {orders.length === 0 ? (
-                <div className="card p-12 text-center">
-                    <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg className="w-10 h-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="card p-8 text-center">
+                    <div className="win-panel-sunken w-12 h-12 flex items-center justify-center mx-auto mb-3">
+                        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                         </svg>
                     </div>
-                    <h3 className="text-xl font-semibold text-dark-900 mb-2">No Orders Yet</h3>
-                    <p className="text-gray-600 mb-6">Create your first order to get started</p>
+                    <h3 className="text-sm font-bold mb-1">No Orders Yet</h3>
+                    <p className="text-xs mb-4">Create your first order to get started</p>
                     <button onClick={() => setShowModal(true)} className="btn btn-primary">
                         Create First Order
                     </button>
@@ -303,11 +303,11 @@ function Orders() {
                                         {recipes.map(recipe => (
                                             <div
                                                 key={recipe._id}
-                                                className="p-3 bg-gray-50 rounded-lg hover:bg-gray-100 active:bg-gray-200 cursor-pointer transition-colors flex gap-3"
+                                                className="win-panel-raised p-2 cursor-pointer flex gap-2 hover:bg-[#000080] hover:text-white"
                                                 onClick={() => addToCart(recipe)}
                                             >
                                                 {/* Recipe Image */}
-                                                <div className="w-16 h-16 flex-shrink-0 rounded overflow-hidden bg-gradient-to-br from-primary-100 to-primary-50">
+                                                <div className="w-12 h-12 flex-shrink-0 win-panel-sunken overflow-hidden">
                                                     {recipe.imageUrl ? (
                                                         <img
                                                             src={recipe.imageUrl}
@@ -315,8 +315,8 @@ function Orders() {
                                                             className="w-full h-full object-cover"
                                                         />
                                                     ) : (
-                                                        <div className="w-full h-full flex items-center justify-center">
-                                                            <svg className="w-8 h-8 text-primary-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <div className="w-full h-full flex items-center justify-center bg-[#d4d0c8]">
+                                                            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                                             </svg>
                                                         </div>
@@ -366,13 +366,13 @@ function Orders() {
                                                     placeholder="Search customer by name..."
                                                 />
                                                 {showCustomerDropdown && customerSearchTerm && (
-                                                    <div className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-48 overflow-y-auto">
+                                                    <div className="absolute z-10 w-full mt-0 win-window max-h-48 overflow-y-auto">
                                                         {allCustomers
                                                             .filter(c => c.name.toLowerCase().includes(customerSearchTerm.toLowerCase()))
                                                             .map(customer => (
                                                                 <div
                                                                     key={customer._id}
-                                                                    className="p-2 hover:bg-gray-50 cursor-pointer flex justify-between items-center border-b border-gray-100 last:border-0"
+                                                                    className="win-menu-item flex justify-between items-center border-b border-[#c0c0c0] cursor-pointer"
                                                                     onClick={() => {
                                                                         setSelectedCustomer(customer);
                                                                         setCustomerName(customer.name);
@@ -382,15 +382,15 @@ function Orders() {
                                                                     }}
                                                                 >
                                                                     <div>
-                                                                        <p className="font-medium text-sm text-dark-900">{customer.name}</p>
-                                                                        <p className="text-xs text-gray-500">{customer.phone}</p>
+                                                                        <p className="font-bold text-xs">{customer.name}</p>
+                                                                        <p className="text-xs">{customer.phone}</p>
                                                                     </div>
-                                                                    <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Select</span>
+                                                                    <span className="badge">Select</span>
                                                                 </div>
                                                             ))
                                                         }
                                                         {allCustomers.filter(c => c.name.toLowerCase().includes(customerSearchTerm.toLowerCase())).length === 0 && (
-                                                            <div className="p-3 text-center text-sm text-gray-500">No customers found</div>
+                                                            <div className="win-menu-item text-xs">No customers found</div>
                                                         )}
                                                     </div>
                                                 )}
@@ -423,10 +423,10 @@ function Orders() {
                                                 </button>
                                             </div>
                                             {selectedCustomer && (
-                                                <div className="mt-2 p-2 bg-green-50 border border-green-200 rounded text-sm flex justify-between items-center">
+                                                <div className="mt-2 win-panel-sunken p-2 text-xs flex justify-between items-center">
                                                     <div>
-                                                        <p className="font-semibold text-green-900">✓ {selectedCustomer.name}</p>
-                                                        <p className="text-green-700 text-xs">{selectedCustomer.phone}</p>
+                                                        <p className="font-bold">✓ {selectedCustomer.name}</p>
+                                                        <p className="text-xs">{selectedCustomer.phone}</p>
                                                     </div>
                                                     <button
                                                         onClick={() => {
@@ -434,7 +434,7 @@ function Orders() {
                                                             setCustomerName('');
                                                             setCustomerPhone('');
                                                         }}
-                                                        className="text-xs text-red-600 hover:text-red-700 underline"
+                                                        className="btn btn-sm"
                                                     >
                                                         Clear
                                                     </button>
@@ -471,72 +471,70 @@ function Orders() {
                                     </div>
 
                                     {cart.length === 0 ? (
-                                        <div className="text-center py-8 bg-gray-50 rounded-lg">
-                                            <p className="text-gray-500 text-sm">Cart is empty</p>
-                                            <p className="text-xs text-gray-400">Click on products to add</p>
+                                        <div className="win-panel-sunken p-6 text-center text-xs">
+                                            <p>Cart is empty</p>
+                                            <p>Click on products to add</p>
                                         </div>
                                     ) : (
-                                        <div className="space-y-3">
+                                        <div className="space-y-1">
                                             {cart.map(item => (
-                                                <div key={item.recipe._id} className="flex items-center gap-2 p-2 bg-gray-50 rounded">
+                                                <div key={item.recipe._id} className="win-panel-raised flex items-center gap-2 p-1">
                                                     <div className="flex-1">
-                                                        <p className="font-medium text-sm text-dark-900">{item.recipe.name}</p>
-                                                        <p className="text-xs text-gray-600">{formatCurrency(item.recipe.sellingPrice)}</p>
+                                                        <p className="font-bold text-xs">{item.recipe.name}</p>
+                                                        <p className="text-xs">{formatCurrency(item.recipe.sellingPrice)}</p>
                                                     </div>
-                                                    <div className="flex items-center gap-2">
+                                                    <div className="flex items-center gap-1">
                                                         <button
                                                             onClick={() => updateQuantity(item.recipe._id, item.quantity - 1)}
-                                                            className="w-6 h-6 bg-gray-200 hover:bg-gray-300 rounded flex items-center justify-center"
+                                                            className="btn btn-sm w-6 h-6 p-0 flex items-center justify-center"
                                                         >
                                                             −
                                                         </button>
-                                                        <span className="w-8 text-center font-semibold">{item.quantity}</span>
+                                                        <span className="w-8 text-center font-bold text-xs">{item.quantity}</span>
                                                         <button
                                                             onClick={() => updateQuantity(item.recipe._id, item.quantity + 1)}
-                                                            className="w-6 h-6 bg-gray-200 hover:bg-gray-300 rounded flex items-center justify-center"
+                                                            className="btn btn-sm w-6 h-6 p-0 flex items-center justify-center"
                                                         >
                                                             +
                                                         </button>
                                                         <button
                                                             onClick={() => removeFromCart(item.recipe._id)}
-                                                            className="ml-2 text-red-600 hover:text-red-700"
+                                                            className="btn btn-sm ml-1"
                                                         >
-                                                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                                            </svg>
+                                                            X
                                                         </button>
                                                     </div>
                                                 </div>
                                             ))}
 
                                             {/* Order Summary */}
-                                            <div className="border-t border-gray-200 pt-3 space-y-2">
-                                                <div className="flex justify-between text-sm">
-                                                    <span className="text-gray-600">Subtotal:</span>
-                                                    <span className="font-medium">{formatCurrency(calculateSubtotal())}</span>
+                                            <div className="win-panel-sunken p-2 mt-2 space-y-1 text-xs">
+                                                <div className="flex justify-between">
+                                                    <span>Subtotal:</span>
+                                                    <span className="font-bold">{formatCurrency(calculateSubtotal())}</span>
                                                 </div>
-                                                <div className="flex justify-between text-sm items-center">
-                                                    <label className="text-gray-600">Packing Charges:</label>
-                                                    <div className="flex items-center gap-2">
-                                                        <span className="text-gray-500">₹</span>
+                                                <div className="flex justify-between items-center">
+                                                    <label>Packing:</label>
+                                                    <div className="flex items-center gap-1">
+                                                        <span>₹</span>
                                                         <input
                                                             type="number"
                                                             step="0.01"
                                                             min="0"
                                                             value={packingCharges}
                                                             onChange={(e) => setPackingCharges(e.target.value)}
-                                                            className="w-24 px-2 py-1 border border-gray-300 rounded text-right text-sm"
+                                                            className="input w-20 text-right"
                                                             placeholder="0.00"
                                                         />
                                                     </div>
                                                 </div>
-                                                <div className="flex justify-between text-sm">
-                                                    <span className="text-gray-600">Tax:</span>
-                                                    <span className="font-medium text-green-600">₹0.00 (Tax-Free)</span>
+                                                <div className="flex justify-between">
+                                                    <span>Tax:</span>
+                                                    <span className="font-bold">₹0.00 (Tax-Free)</span>
                                                 </div>
-                                                <div className="flex justify-between text-lg font-bold border-t border-gray-200 pt-2">
-                                                    <span>Total:</span>
-                                                    <span className="text-primary-600">{formatCurrency(calculateTotal())}</span>
+                                                <div className="flex justify-between font-bold border-t border-[#808080] pt-1">
+                                                    <span>TOTAL:</span>
+                                                    <span>{formatCurrency(calculateTotal())}</span>
                                                 </div>
                                             </div>
                                         </div>
